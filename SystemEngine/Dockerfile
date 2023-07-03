@@ -1,9 +1,10 @@
 #Dockerfile
 FROM python:3.11.4
+WORKDIR /SystemEngine
+COPY . /SystemEngineDocker
 
-ADD main.py .
-
-RUN pip install pandas numpy
+#RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install numpy
 
 #pymongo (MongoDB Connecter for Python)
 RUN pip install pymongo  
