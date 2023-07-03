@@ -13,6 +13,8 @@
 #Invoice Mailing  (Auto Mailing System)
         
 #importingmodules
+import time
+import os
 
 
 #MainFunctiion
@@ -20,8 +22,8 @@
 #print("Hello World!")
 print("Welcome to BEMSystem \nDeveloped by Rishabh Jain & Utkarsh Jha")
 print("Loading System Engine...")
-
-
+time.sleep(5)
+os.system('cls')
 #Registration Form (Upload to host.py)
 #Input Basic Info & Create UserName/Password
 
@@ -37,3 +39,4 @@ print("Loading System Engine...")
 #_______________________________
 print("Please Wait while we log you in...")
 print("Loading...")
+time.sleep(5)
