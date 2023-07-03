@@ -17,9 +17,8 @@ import time
 import os
 
 #Importing
-from login import login 
-from Form-1/registration import registration
-
+from loginandregistration import login 
+from loginandregistration import registration 
 #definebasicfunctions
 
 
@@ -41,12 +40,13 @@ print("Loading System Engine...")
 time.sleep(5)
 clear_terminal()
 loginopt = input("Please Enter 1 to login as Existing User! \nPlease Enter 2 for New Registration")
+print(loginopt)
 #Login/Registration Window
 if loginopt == 1:
-    login()
+    login.login()
 #Registration Form (Upload to host.py)
 elif loginopt == 2:
-    registration()
+    registration.registration()
 
 #Input Basic Info & Create UserName/Password
 
