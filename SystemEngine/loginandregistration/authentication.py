@@ -1,14 +1,19 @@
 #                                                                     by RishabhJain2010
 
 #importing modules
+import sys
+sys.path.append("/SystemEngine/osessenstials.py")
+
+import osessenstials
 import registration
 import login
 import elogin
 
+
 def identityverification():
 
-    loginopt = input("Please Enter 1 to login as Existing User! \nPlease Enter 2 for New Registration")
-    
+    loginopt = input("Please Enter 1 to login as Existing User! \nPlease Enter 2 for New Registration! \nPlease Enter 3 for Employee Login! \n ")
+    clear_terminal()
     #Login/Registration Window
     if loginopt == 1:
         return login.login()
