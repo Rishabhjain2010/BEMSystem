@@ -91,10 +91,8 @@ def registration():
  print("Your Employee Username is: " + employeuser)
  print("Your Employee Password is: " + employepass)
  print("Please Note it down for future reference!")
- client.close()
-
-
  
+client.close()
 
 
     
