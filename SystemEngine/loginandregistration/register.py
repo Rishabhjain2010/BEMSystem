@@ -5,7 +5,6 @@ import time
 import random
 import string
 
-
 #Connect to MongoDB
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mongo = myclient["BEMSystem"]
@@ -25,16 +24,16 @@ def eusername_available(euser):
 
 #employe username function 
 
-def generate_eunique_username(lenght=6):
+def generate_eunique_username(length=6):
     letters = string.ascii_lowercase
-    euser = join(random.choice.(characters) for i in range(lenght))
+    euser = ''.join(random.choice(letters) for i in range(length))
     if eusername_available(euser):
-       return esuer
+       return euser
     else: 
        return generate_eunique_username()
 
 
-def genrate_epass(lenght=12):
+def genrate_epass(length=12):
      characters = string.ascii_letters + string.digits + string.punctuation
      return ''.join(random.choice(characters) for i in range(length))
 
@@ -69,30 +68,30 @@ def registration():
     employepass = genrate_epass()
 
  #insert database (Users)    
- userdata = {
-     "First Name": firstname,
-     "Last Name": lastname,
-     "Username" : username,
-     "Password" : password,
-     "CompanyN" ; companyname,
-     "Email" : email,
-     "Contact" : contact,
-     "StreetAdd" : street_address,
-     "City" : city,
-     "State" : state,
-     "Country" : country,
-     "PostalCode" : postal_code,
-     "empusername" : employeuser,
-     "emppass" : employepass
- }
- collection.insert_one(userdata)
- time.sleep(1)
- print("Registration Completed! Welcome Onboard...")
- print("Your Employee Username is: " + employeuser)
- print("Your Employee Password is: " + employepass)
- print("Please Note it down for future reference!")
- 
-client.close()
+    userdata = {
+        "First Name": firstname,
+        "Last Name": lastname,
+        "Username" : username,
+        "Password" : password,
+        "CompanyN" : companyname,
+        "Email" : email,
+        "Contact" : contact,
+        "StreetAdd" : street_address,
+        "City" : city,
+        "State" : state,
+        "Country" : country,
+        "PostalCode" : postal_code,
+        "empusername" : employeuser,
+        "emppass" : employepass
+    }
+    collection.insert_one(userdata)
+    time.sleep(1)
+    print("Registration Completed! Welcome Onboard...")
+    print("Your Employee Username is: " + employeuser)
+    print("Your Employee Password is: " + employepass)
+    print("Please Note it down for future reference!")
+    
+myclient.close()
 
 
     

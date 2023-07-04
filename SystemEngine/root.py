@@ -18,10 +18,9 @@ import time
 import os
 
 #Importing
-from loginandregistration import login 
-from loginandregistration import registration 
+# from loginandregistration import login 
+# from loginandregistration import registration
 from loginandregistration import authentication    
-from loginandregistration import host
 #definebasicfunctions
 
 
