@@ -11,7 +11,7 @@ from loginandregistration import elogin
 
 def identityverification():
 
-    loginopt = input("Please Enter 1 to login as Existing User! \nPlease Enter 2 for New Registration! \nPlease Enter 3 for Employee Login! \n ")
+    loginopt = int(input("Please Enter 1 to login as Existing User! \nPlease Enter 2 for New Registration! \nPlease Enter 3 for Employee Login! \n "))
     # osessenstials.clear_terminal()
     #Login/Registration Window
     if loginopt == 1:
@@ -21,6 +21,6 @@ def identityverification():
         return registration.registration()
     elif loginopt ==3:
         return elogin()
-    elif loginopt!=1 || loginopt != 2 || loginopt != 3:
+    elif loginopt!=1 | loginopt != 2 | loginopt != 3:
         print("Invalid Option!")
         return identityverification()
