@@ -7,6 +7,7 @@ import string
 
 #Connect to MongoDB
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+
 mongo = myclient["BEMSystem"]
 collection = mongo["users"]
 
@@ -46,7 +47,7 @@ def registration():
     lastname = input("Please Enter your Last Name:")
     username = input("Please enter a Username: ")
     #uniqueusername 
-    username_available()
+    username_available(username)
     if username_available(username):
         print("Username Available!")
     else: 
