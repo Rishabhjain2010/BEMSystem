@@ -20,6 +20,7 @@ import os
 #Importing
 # from loginandregistration import login 
 # from loginandregistration import registration
+from loginandregistration import event
 from loginandregistration import authentication    
 #definebasicfunctions
 
@@ -27,6 +28,15 @@ from loginandregistration import authentication
 def clear_terminal():
     # Clear the terminal screen based on the operating system
     os.system('cls' if os.name == 'nt' else 'clear')
+def options_menue():
+    option_selected = int(input("Enter 1 for event enquiry:  \n Enter 2 for new event registration: "))
+    if option_selected == 1:
+        event.event_enquiry()
+    elif option_selected == 2:
+        event.event_details()
+
+
+
 
 # Call the function to clear the terminal
 #clear_terminal()
@@ -44,6 +54,11 @@ clear_terminal()
 
 #Identity Verification (Login and Registration Prompt)
 authentication.identityverification() 
+
+
+event.event_details()
+
+options_menue()
 
 
 

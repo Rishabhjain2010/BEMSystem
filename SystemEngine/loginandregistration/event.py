@@ -10,11 +10,16 @@ mongo = myclient["BEMSystem"]
 collection = mongo["users"]
 
 
+
+def event_enquiry():
+    print("Event enquiry will be created")
+
 # for event we will take all data as input and store it in dictonary
 
 def event_details():
     print("Event registration starting")
     print("Enter all the details carefully")
+    time.sleep(3)
     event_id = input("Enter a unique event ID for future refference")
     event_name = input("Enter event name:  ")
     event_venue = input("Enter event venue:  ")
@@ -40,5 +45,7 @@ def event_details():
     time.sleep(1)
     print("Event registration complete")
     print(event_name + " Has been scheduled for " + event_date)
+
+event_details()
 
 myclient.close()
