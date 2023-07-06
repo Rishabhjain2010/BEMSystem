@@ -47,5 +47,5 @@ def event_details():
     print(event_name + " Has been scheduled for " + event_date)
 
 event_details()
-
+# Hn bhai hua kuch 
 myclient.close()
