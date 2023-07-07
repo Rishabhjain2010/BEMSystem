@@ -52,8 +52,8 @@ def event_details():
         list_of_Prices = []
         for e in range(num):
             key = input("Enter the Booking type (Premimum, Gold, Platinum etc.)")
-            value = int(input("Enter the no. of seats in "+key ": "))
-            price = float(input("Enter the cost of each " +key " class ticket: "))
+            value = int(input("Enter the no. of seats in ", +key ,": "))
+            price = float(input("Enter the cost of each ", +key ," class ticket:"))
             ticket_data[key] = value
             list_of_Prices.append(price)
 
