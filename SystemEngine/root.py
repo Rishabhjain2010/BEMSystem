@@ -20,7 +20,7 @@ import os
 #Importing
 # from loginandregistration import login 
 # from loginandregistration import registration
-from loginandregistration import event
+from eventsAndBookings import event
 from loginandregistration import authentication    
 #definebasicfunctions
 
