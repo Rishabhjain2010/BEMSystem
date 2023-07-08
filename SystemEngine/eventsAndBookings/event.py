@@ -5,6 +5,7 @@ import time
 from datetime import datetime
 import random
 import string
+
 # conneting to mongoDB 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mongo = myclient["BEMSystem"]
