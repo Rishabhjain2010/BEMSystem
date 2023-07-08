@@ -38,7 +38,7 @@ def elogin():
     time.sleep(3)
 
     #Fetch and Verify DataBase
-    verifyidentity = {"username": username, "password": passkey }
+    verifyidentity = {"eusername": username, "epassword": passkey }
     result = collection.find_one(verifyidentity)
 
     if result is not None:
