@@ -39,7 +39,7 @@ def event_details():
 
 #                                                                                       Ticketing process 
 
-
+    securityv = input("Does this event require Attendee's security verifiction? , Enter Y if yes, enter N if no ")
     print("Ticketing: \n")
     time.sleep(1)
     ticket_type = input("Does your ticketing scheme follow any scheme, Enter Y if yes, enter N if no")
