@@ -1,4 +1,4 @@
-                                                                                    #by RishabhJain2010
+                                                                    #by RishabhJain2010
 #import required modules
 
 import time
