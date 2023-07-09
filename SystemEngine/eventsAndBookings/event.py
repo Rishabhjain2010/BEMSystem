@@ -7,9 +7,10 @@ import random
 import string
 
 # conneting to mongoDB 
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mongo = myclient["BEMSystem"]
-collection = mongo["users"]
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+print(client)
+db = client["BEMSystem"]
+collection = db["users"]
 
 
 
@@ -29,11 +30,11 @@ def event_details():
     event_Venue = input("Enter event venue:  ")
     date_string = input("Enter a date (YYYY-MM-DD): ")
     date = datetime.strptime(date_string, "%Y-%m-%d")
-    event_Date = input("Enter event date:  ")
+    # event_Date = input("Enter event date:  ")
     event_Type = input("Enter event type: ")
-    event_Attendies = input("Enter the no. of expected attendies:  ")
-    event_Organizers = input("Enter no. of event organizers:  ")
-    event_Host_Contact = input("Enter event ")
+    event_Attendies = int(input("Enter the no. of expected attendies:  "))
+    event_Organizers = int(input("Enter no. of event organizers:  "))
+    event_Host_Contact = int(input("Enter event contact no of the host "))
     host_name = input("Enter the name of the Host: ")
 
 
@@ -63,6 +64,7 @@ def event_details():
         ticket_Quantity = int(input("Enter the no. of tickets you want to sell: "))
         ticket_Price_Single = float(input("Enter price of single ticket: "))
 
+    global event_data
 
     event_data = {
             "event_ID": event_ID,
@@ -76,14 +78,15 @@ def event_details():
             "event_Host_Contact": event_Host_Contact,
             "ticket_Quantity": ticket_Quantity,
             "ticket_Price_Single": ticket_Price_Single,
-            "tickets_Schemas" : ticket_data,
-            "tickets_Schemas_priceList" : list_of_Prices
+            # "tickets_Schemas" : ticket_data,
+            # "tickets_Schemas_priceList" : list_of_Prices
 
     }
-    collection.insert_many(event_data)
+
+    collection.insert_one(event_data)
     time.sleep(1)
     print("Event registration complete")
     print(event_Name + " Has been scheduled for " + date)
 
 event_details()
-myclient.close()
+client.close()
