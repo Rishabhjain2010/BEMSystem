@@ -29,7 +29,7 @@ def event_details():
     event_Venue = input("Enter event venue:  ")
     date_string = input("Enter a date (YYYY-MM-DD): ")
     date = datetime.strptime(date_string, "%Y-%m-%d")
-    # event_Date = input("Enter event date:  ")
+    event_Date = input("Enter event date:  ")
     event_Type = input("Enter event type: ")
     event_Attendies = input("Enter the no. of expected attendies:  ")
     event_Organizers = input("Enter no. of event organizers:  ")
