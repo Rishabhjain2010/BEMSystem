@@ -8,16 +8,16 @@ import pymongo
 from loginandregistration import register as registration
 
 #Connect to MongoDB
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mongo = myclient["BEMSystem"]
-collection = mongo["users"]
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+db = client["BEMSystem"]
+collection = db["users"]
 
 #Dashboard Function
 def dashboard() :
     print("Welcome to Dashboard!")
     ename = input("Please enter your Full Name: ") 
     eid = input("Please Enter your Employee ID: ")
- 
+
  # Create Ticket Sale!
 
     #Call ticket sale function here! (throw ename & eid)
