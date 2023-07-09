@@ -64,11 +64,6 @@ def event_details():
         ticket_Price_Single = float(input("Enter price of single ticket: "))
 
 
-
-
-
-
-
     event_data = {
             "event_ID": event_ID,
             "host_name": host_name,
