@@ -14,4 +14,7 @@ RUN pip install pandas
 
 #AI Image Recognition
 RUN pip install opencv-python
+
+#Matplotlib (Visualization with python)
+RUN pip install Matplotlib
 CMD [ "python", "root.py" ]
