@@ -1,4 +1,4 @@
-#                               Rishabhjain2010     
+#                                                        Rishabhjain2010     
 
 #This function is an automated image verification which captures images live from web cam and then matches the images from iages available in our database.
 #If the image matches with the image in our database then it returns true else it returns false.

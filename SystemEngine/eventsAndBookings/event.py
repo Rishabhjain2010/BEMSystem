@@ -8,7 +8,7 @@ import string
 
 # conneting to mongoDB 
 client = pymongo.MongoClient("mongodb://localhost:27017/")
-print(client)
+print(client)       #
 db = client["BEMSystem"]
 collection = db["users"]
 
