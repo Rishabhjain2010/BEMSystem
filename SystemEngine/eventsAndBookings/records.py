@@ -2,8 +2,9 @@
 
 #This fucntion shows all tickets sold for a particular event ID entered by user in recent sale last format!
 
-import dbconnect from
+#import dbconnect from
 from tabulate import tabulate
+import time
 
 def show_eventsale() :
 
