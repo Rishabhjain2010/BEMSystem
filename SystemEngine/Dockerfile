@@ -1,6 +1,6 @@
 #                                                               By Rishabhjain2010
-#                                                               Date: 2023/07/11
-#                                                               Time: 04:11:00
+#                                                               Date: 2023/07/12
+#                                                               Time: 04:51:00
 
 #Dockerfile
 FROM python:3.11.4
@@ -21,4 +21,6 @@ RUN pip install opencv-python
 
 #Matplotlib (Visualization with python)
 RUN pip install Matplotlib
+RUN pip install tabulate
+
 CMD [ "python", "root.py" ]

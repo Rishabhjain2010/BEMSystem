@@ -15,19 +15,21 @@
         
 #importingmodules
 import time
-import os
+
 
 #Importing
-# from loginandregistration import login 
-# from loginandregistration import registration
+from loginandregistration import login 
+from loginandregistration import register
 from eventsAndBookings import event
 from loginandregistration import authentication    
+import osessenstials
+
 #definebasicfunctions
 
+osessenstials.clear_terminal()
 
-def clear_terminal():
-    # Clear the terminal screen based on the operating system
-    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def options_menue():
     option_selected = int(input("Enter 1 for event enquiry:  \n Enter 2 for new event registration: "))
     if option_selected == 1:
@@ -36,41 +38,28 @@ def options_menue():
         event.event_details()
 
 
-
-
-# Call the function to clear the terminal
-#clear_terminal()
-
 #MainFunctiion
 
-#print("Hello World!")
-#Welcomeportal
+                                                                #Welcomeportal
 
-#by RishabhJain2010
+                                                                #by RishabhJain2010
+
 print("Welcome to BEMSystem \nDeveloped by Rishabh Jain & Utkarsh Jha")
 print("Loading System Engine...")
 time.sleep(5)
-clear_terminal()
+osessenstials.clear_terminal()
 
 #Identity Verification (Login and Registration Prompt)
 authentication.identityverification() 
 
+#event.event_details()
 
-event.event_details()
+#options_menue()
 
-options_menue()
-
-
-
-#Redirect to F-1
 
 #Login Form (Fetch from Host.py)
 
-
-
-
-
 #_______________________________
-print("Please Wait while we log you in...")
-print("Loading...")
-time.sleep(5)
+#print("Please Wait while we log you in...")
+#print("Loading...")
+#time.sleep(5)
