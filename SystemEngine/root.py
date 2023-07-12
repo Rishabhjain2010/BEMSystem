@@ -26,7 +26,7 @@ import osessenstials
 
 #definebasicfunctions
 
-osessenstials.clear_terminal()
+2osessenstials.clear_terminal()
 
 
 
@@ -36,6 +36,7 @@ def options_menue():
         event.event_enquiry()
     elif option_selected == 2:
         event.event_details()
+
 
 
 #MainFunctiion
