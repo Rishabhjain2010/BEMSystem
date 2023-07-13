@@ -21,7 +21,10 @@ def ticket_Sale():
         print("Welcome, Ticket sale window starting")
         time.sleep(2)
 
+
+
         # here we are extracting the cost of each ticket 
+        
         query = { "ticket_Price_Single":{"$exists": True} }
         result = collection.find_one(query)
         single_ticket_cost = result["ticket_Price_Single"]
@@ -31,8 +34,10 @@ def ticket_Sale():
         print("The net amount payable is ", total_cost)
         # payment received check 
 
-        payment_verification = input("Enter Y if payment is confirmed and N if you want to cancle the process")
+
+        payment_verification = input("Enter Y if payment is confirmed and N if you want to cancle the process: ")
         if payment_verification.upper() == 'Y':
+
 
         # now we will update the remaining seats in the data base
 
