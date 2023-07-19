@@ -68,7 +68,8 @@ def ticket_Sale():
             data = dict(zip(keys, values))
             data["booking_id"] = booking_id
             booking_details[data["booking_id"]] = data
-        print(booking_details)
+
+
 
         #inserting the data
 
@@ -83,8 +84,8 @@ def ticket_Sale():
 
         payment_verification = input("Enter Y if payment is confirmed and N if you want to cancle the process: ")
         if payment_verification.upper() == 'Y':
-
-            confirmed_booking.insert_one(booking_details)
+            for entry in booking_details.values():
+                confirmed_booking.insert_one(entry)
 
 
         # now we will update the remaining seats in the data base
