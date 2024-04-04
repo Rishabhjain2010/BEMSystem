@@ -22,8 +22,8 @@ def event_details():
     print("Event registration starting")
     print("Enter all the details carefully")
     time.sleep(3)
-
-#                                                                                      Event registration
+     
+                                                 #Event registration
 
     event_ID = int(input("Enter a unique event ID for future Refference"))
     event_Name = input("Enter event name:  ")
@@ -36,9 +36,7 @@ def event_details():
     event_Organizers = int(input("Enter no. of event organizers:  "))
     event_Host_Contact = int(input("Enter event contact no of the host "))
     host_name = input("Enter the name of the Host: ")
-
-
-#                                                                                       Ticketing process 
+                                                #Ticketing process 
 
     securityv = input("Does this event require Attendee's security verifiction? , Enter Y if yes, enter N if no ")
     print("Ticketing: \n")
@@ -88,5 +86,5 @@ def event_details():
     print("Event registration complete")
     print(event_Name + " Has been scheduled for " + date)
 
-event_details()
-client.close()
+#event_details()
+#client.close()

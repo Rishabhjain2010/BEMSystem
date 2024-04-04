@@ -18,15 +18,14 @@ import time
 
 
 #Importing
-from loginandregistration import login 
-from loginandregistration import register
-from eventsAndBookings import event
-from loginandregistration import authentication    
+import authentication  as auth
+import loginandregistration  
+import eventsAndBookings 
 import osessenstials
 
 #definebasicfunctions
 
-2osessenstials.clear_terminal()
+osessenstials.clear_terminal()
 
 
 
@@ -51,7 +50,7 @@ time.sleep(5)
 osessenstials.clear_terminal()
 
 #Identity Verification (Login and Registration Prompt)
-authentication.identityverification() 
+auth.identityverification() 
 
 #event.event_details()
 
