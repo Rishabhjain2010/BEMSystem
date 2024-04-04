@@ -76,8 +76,8 @@ def event_details():
             "event_Host_Contact": event_Host_Contact,
             "ticket_Quantity": ticket_Quantity,
             "ticket_Price_Single": ticket_Price_Single,
-            # "tickets_Schemas" : ticket_data,
-            # "tickets_Schemas_priceList" : list_of_Prices
+            "tickets_Schemas" : ticket_data,
+            "tickets_Schemas_priceList" : list_of_Prices
 
     }
 
