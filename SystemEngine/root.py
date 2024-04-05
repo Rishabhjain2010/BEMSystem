@@ -18,7 +18,7 @@ import time
 
 
 #Importing
-import authentication  as auth
+from loginandregistration import authentication  as auth
 import loginandregistration  
 import eventsAndBookings 
 import osessenstials
@@ -44,7 +44,7 @@ def options_menue():
 
                                                                 #by RishabhJain2010
 
-print("Welcome to BEMSystem \nDeveloped by Rishabh Jain & Utkarsh Jha")
+print("Welcome to BEMSystem \nDeveloped by Rishabh Jain ")
 print("Loading System Engine...")
 time.sleep(5)
 osessenstials.clear_terminal()

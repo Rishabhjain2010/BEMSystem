@@ -5,9 +5,9 @@
 # sys.path.append("/SystemEngine/osessenstials.py")
 
 import osessenstials
-from loginandregistration import register as registration
-from loginandregistration import login 
-from loginandregistration import elogin
+import register as registration
+import login 
+import elogin
 
 def identityverification():
 

@@ -1,6 +1,6 @@
 #                                                                   by RishabhJain2010
 
-import pymongo
+import pymongo  
 import time
 import random
 import string
@@ -13,7 +13,10 @@ collection = mongo["users"]
 
 #unique username function
 def unique_username():
-    username = input("Enter a username: ")
+    while True: 
+
+        username = input("Enter a username: ")
+        username_available (username)
 def username_available(username):
     query = {"username": username}
     result = collection.find_one(query)
