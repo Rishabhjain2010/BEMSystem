@@ -4,10 +4,9 @@
 # import sys
 # sys.path.append("/SystemEngine/osessenstials.py")
 
+from . import register , login , elogin
 import osessenstials
-import register as registration
-import login 
-import elogin
+
 
 def identityverification():
 
@@ -16,10 +15,11 @@ def identityverification():
    
     #Login/Registration Window
     if loginopt == 1:
-        return login.login()
+        return login.login()  #completed
+    
     #Registration Form (Upload to host.py)
     elif loginopt == 2:
-        return registration.registration()
+        return register.registration()
     elif loginopt ==3:
         return elogin()
     elif loginopt!=1 | loginopt != 2 | loginopt != 3:

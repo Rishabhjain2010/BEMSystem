@@ -1,5 +1,5 @@
 #                                                               By Rishabhjain2010
-#                                                               Date: 2023/07/12
+#                                                               Date: 2024/04/06
 #                                                               Time: 04:51:00
 
 #Dockerfile
@@ -22,5 +22,8 @@ RUN pip install opencv-python
 #Matplotlib (Visualization with python)
 RUN pip install Matplotlib
 RUN pip install tabulate
+RUN pip install Matplotlib
+RUN pip install bcrypt
+
 
 CMD [ "python", "root.py" ]

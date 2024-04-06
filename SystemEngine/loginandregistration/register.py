@@ -1,9 +1,11 @@
 #                                                                   by RishabhJain2010
 
+from .. import osessenstials
 import pymongo  
 import time
 import random
 import string
+import bcrypt
 
 #Connect to MongoDB
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -45,6 +47,7 @@ def genrate_epass(length=12):
 
 #Registration Function
 def registration():
+    osessenstials.clear_terminal() 
     print("Welcome! \nWe are happy to have you onboard!")
     firstname = input("Please Enter your First Name:")
     lastname = input("Please Enter your Last Name:")
@@ -57,7 +60,8 @@ def registration():
         print("Username not Available! Please Try Again!")
         return unique_username()
     password = input("Please Create a Password: ")
-    #password recheck & strenght check to be created later (encrption mode)
+    password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())      #Encryption of Admin's Password
+
     companyname = input("Please enter your Company Name: ")
     email = input("Please enter your EMail: ")
     contact = input("Please enter your contact: ")
@@ -70,6 +74,11 @@ def registration():
     
     employeuser = generate_eunique_username()
     employepass = genrate_epass()
+    time.sleep(1)
+    osessenstials.clear_terminal()
+    
+    
+    enc_employepass =bcrypt.hashpw(employepass.encode(), bcrypt.gensalt())     #Encryption of Employee's Password
 
  #insert database (Users)    
     userdata = {
@@ -86,14 +95,16 @@ def registration():
         "Country" : country,
         "PostalCode" : postal_code,
         "empusername" : employeuser,
-        "emppass" : employepass
-    }
+        "emppass" : enc_employepass 
+        }
     collection.insert_one(userdata)
-    time.sleep(1)
+
     print("Registration Completed! Welcome Onboard...")
     print("Your Employee Username is: " + employeuser)
     print("Your Employee Password is: " + employepass)
     print("Please Note it down for future reference!")
+    
+    
     
 myclient.close()
 

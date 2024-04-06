@@ -18,16 +18,14 @@ import time
 
 
 #Importing
-from loginandregistration import authentication  as auth
-import loginandregistration  
-import eventsAndBookings 
+from .loginandregistration import authentication  as auth
 import osessenstials
 
 #definebasicfunctions
 
 osessenstials.clear_terminal()
 
-
+"""
 
 def options_menue():
     option_selected = int(input("Enter 1 for event enquiry:  \n Enter 2 for new event registration: "))
@@ -35,7 +33,7 @@ def options_menue():
         event.event_enquiry()
     elif option_selected == 2:
         event.event_details()
-
+""" 
 
 
 #MainFunctiion
