@@ -1,6 +1,6 @@
 #                                                                   by RishabhJain2010
 
-from .. import osessenstials
+import osessenstials
 import pymongo  
 import time
 import random
@@ -104,9 +104,9 @@ def registration():
     print("Your Employee Password is: " + employepass)
     print("Please Note it down for future reference!")
     
+    #Dashboard Redirect
+
     
-    
-myclient.close()
 
 
     

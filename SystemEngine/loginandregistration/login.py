@@ -2,11 +2,12 @@
 #import required modules
 
 import sys 
-from .. import osessenstials
+import osessenstials
 import time
 import pymongo
 from loginandregistration import register as registration
 import bcrypt   
+from .. eventsAndBookings import dashboards
 
 #Connect to MongoDB
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -43,11 +44,12 @@ def login():
         #Fetch and Verify DataBase
         if  verifypassword(username, passkey):
         
-            print("User Authenticated!"+ "\nWelcome" + username)
+            print("User Authenticated!"+ "\nWelcome " + username)
             print("Please Wait while we redirect you to your dashboard...")
             time.sleep(3)
-            #Redirecting user to DashBoard page
-            return 
+                      
+                       #Redirecting user to DashBoard page
+            return admin_dashboard()
 
         else: 
             print("Invalid password. Please try again.")

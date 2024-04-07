@@ -3,7 +3,7 @@
 
 #import required modules
 import sys , bcrypt 
-from .. import osessenstials
+import osessenstials
 import time
 import pymongo
 from loginandregistration import register as registration

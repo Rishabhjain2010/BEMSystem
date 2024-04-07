@@ -9,7 +9,8 @@
 #Security Checks (AI Model and Face Recognition System)
 #Event Attendance (Using Face Recognition)
 #Event Feedback (Auto Audio Sanmpling)
-#Event Reminder Alert (Auto Emailing)
+#Event Reminder Alert (Auto Emailing)113
+
 #Event Summary Report  (Total Ticket Sold , Profit Earned etc.)
 #Invoice Mailing  (Auto Mailing System)
         
@@ -18,7 +19,7 @@ import time
 
 
 #Importing
-from .loginandregistration import authentication  as auth
+from loginandregistration import authentication  as auth
 import osessenstials
 
 #definebasicfunctions
