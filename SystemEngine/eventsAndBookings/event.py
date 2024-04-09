@@ -74,7 +74,7 @@ def enter_seating_arrangement(ticket_data):
 
 
 
-def event_details():
+def new_event():
     clear_terminal()
     print("Event registration starting...")
     print("Enter all the details carefully\n")

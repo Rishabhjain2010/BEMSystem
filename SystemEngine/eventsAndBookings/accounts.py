@@ -14,4 +14,6 @@ def netprofit(totalsale,taxdeduction):
     return netprofit
 
 
-    
+    def sales_dashbaord()
+        print(" Sales Dashboard ")
+        print("\n Enter  : " )
