@@ -7,7 +7,7 @@ import time
 import pymongo
 from loginandregistration import register as registration
 import bcrypt   
-from .. eventsAndBookings import dashboards
+from eventsAndBookings import dashboards
 
 #Connect to MongoDB
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -49,7 +49,7 @@ def login():
             time.sleep(3)
                       
                        #Redirecting user to DashBoard page
-            return admin_dashboard()
+            return dashboards.admin_dashboard()
 
         else: 
             print("Invalid password. Please try again.")

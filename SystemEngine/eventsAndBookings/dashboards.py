@@ -1,6 +1,6 @@
 # Admin Dashboard
 
-from event import new_event
+from eventsAndBookings import event
 
 
 def admin_dashboard():
@@ -22,7 +22,7 @@ def admin_dashboard():
                 continue
 
             if choice == 1:
-                new_event()
+                event.new_event()
             elif choice == 2:
                 delete_event()
             elif choice == 3:
@@ -42,7 +42,8 @@ def admin_dashboard():
 
 def create_new_event():
     print("Creating a new event...")
-    # Implement event creation logic here
+    new_event()
+   
 
 def view_sales():
     print("Viewing sales...")

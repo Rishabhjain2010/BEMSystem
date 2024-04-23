@@ -1,0 +1,16 @@
+RUN pip install numpy  
+
+#pymongo (MongoDB Connecter for Python)
+RUN pip install pymongo  
+
+RUN pip install pandas
+
+#AI Image Recognition
+RUN pip install opencv-python
+
+#Matplotlib (Visualization with python)
+RUN pip install Matplotlib
+RUN pip install tabulate
+
+#Used for encryption and decryption of data
+RUN pip install bcrypt

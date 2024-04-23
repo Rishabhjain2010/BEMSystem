@@ -4,7 +4,9 @@
 # import sys
 # sys.path.append("/SystemEngine/osessenstials.py")
 
-from . import register , login , elogin
+from loginandregistration import register 
+from loginandregistration import login 
+from loginandregistration import elogin
 import osessenstials
 
 

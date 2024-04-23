@@ -6,6 +6,7 @@ import time
 import random
 import string
 import bcrypt
+from eventsAndBookings import dashboards 
 
 #Connect to MongoDB
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -104,7 +105,12 @@ def registration():
     print("Your Employee Password is: " + employepass)
     print("Please Note it down for future reference!")
     
+
     #Dashboard Redirect
+    dashboards.admin_dashboard()
+
+    
+
 
     
 

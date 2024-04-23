@@ -22,7 +22,6 @@ RUN pip install opencv-python
 #Matplotlib (Visualization with python)
 RUN pip install Matplotlib
 RUN pip install tabulate
-RUN pip install Matplotlib
 RUN pip install bcrypt
 
 
