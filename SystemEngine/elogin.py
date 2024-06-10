@@ -6,30 +6,13 @@ import sys , bcrypt
 import osessenstials
 import time
 import pymongo
-from loginandregistration import register as registration
+import register as registration
+from dashboards import emp_dashboard
 
 #Connect to MongoDB
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["BEMSystem"]
 collection = db["users"]
-
-#Dashboard Function
-def dashboard() :
-    print("Welcome to Dashboard!")
-    ename = input("Please enter your Full Name: ") 
-    eid = input("Please Enter your Employee ID: ")
-
- # Create Ticket Sale!
-
-    #Call ticket sale function here! (throw ename & eid)
-    print("Please Wait while we create your ticket sale...") 
-    time.sleep(5)
-    print("Ticket Sale Created!")
-    
-
-
-
-
 
 #Login Function
 def elogin():
@@ -46,7 +29,7 @@ def elogin():
     if result is None:
         print("Invalid Credentials.")
         choice=input("Press ENTER to try again or Ctrl+C to exit the program.")
-        if choice ==" " :
+        if choice =="" :
             return  elogin()
         else:
             print(" Exiting  Program...")
@@ -57,7 +40,7 @@ def elogin():
             print("User Authenticated!"+ "\nWelcome" + username)
             print("Please Wait while we redirect you to your dashboard...")
             time.sleep(3)
-            dashboard()
+            emp_dashboard(username)
             
     else: 
         print("Invalid Credentials!")
@@ -65,7 +48,7 @@ def elogin():
         print("Please Retry!")
         elogin()
 
-#Dashboard Function
+#Completed
 
 
 

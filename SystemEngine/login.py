@@ -5,9 +5,9 @@ import sys
 import osessenstials
 import time
 import pymongo
-from loginandregistration import register as registration
+import register as registration
 import bcrypt   
-from eventsAndBookings import dashboards
+import dashboards
 
 #Connect to MongoDB
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -19,7 +19,8 @@ collection = mongo["users"]
 def verifypassword(username , passkey) :
     user_data = collection.find_one({"Username": username}) 
     if user_data is None :
-        print("User not found in the database.")  
+        print("User not found in the database.")
+        time.sleep(5) 
         return login()
     else : 
         stored_password = user_data["Password"]
@@ -49,15 +50,16 @@ def login():
             time.sleep(3)
                       
                        #Redirecting user to DashBoard page
-            return dashboards.admin_dashboard()
+            return dashboards.admin_dashboard(username)
 
         else: 
             print("Invalid password. Please try again.")
-            attempts += 1
+            ++attempts 
             choice = input("Do you want to create a new account? (Y/N): ").upper()
             if choice == "Y":
                 registration()
-            time.sleep(3) 
+                time.sleep(3) 
+            
 
     print("Maximum number of login attempts reached. Please try again later. \n If you need assistance please contact the system administrator. \n Exiting...")
     sys.exit(1)

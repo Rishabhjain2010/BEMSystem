@@ -4,13 +4,15 @@
 # import sys
 # sys.path.append("/SystemEngine/osessenstials.py")
 
-from loginandregistration import register 
-from loginandregistration import login 
-from loginandregistration import elogin
-import osessenstials
+
+
 
 
 def identityverification():
+    import register 
+    import login 
+    import elogin
+    import osessenstials
 
     loginopt = int(input("Please Enter 1 to login as Existing User! \nPlease Enter 2 for New Registration! \nPlease Enter 3 for Employee Login! \n "))
     osessenstials.clear_terminal()
@@ -24,6 +26,6 @@ def identityverification():
         return register.registration()
     elif loginopt ==3:
         return elogin.elogin()
-    elif loginopt!=1 | loginopt != 2 | loginopt != 3:
+    elif loginopt != 1 | loginopt != 2 | loginopt != 3:
         print("Invalid Option!")
         return identityverification()

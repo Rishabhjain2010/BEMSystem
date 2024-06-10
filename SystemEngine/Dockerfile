@@ -4,6 +4,7 @@
 
 #Dockerfile
 FROM python:3.11.4
+
 #workdirectory
 WORKDIR /App-SystemEngine
 COPY root.py /App-SystemEngine
@@ -23,6 +24,12 @@ RUN pip install opencv-python
 RUN pip install Matplotlib
 RUN pip install tabulate
 RUN pip install bcrypt
+RUN sudo apt-get install libqt5gui5
+RUN sudo apt install cmake
+RUN pip install face_recognition
+RUN pip 
+
 
 
 CMD [ "python", "root.py" ]
+
