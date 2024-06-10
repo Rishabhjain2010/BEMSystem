@@ -17,3 +17,7 @@ def netprofit(totalsale,taxdeduction):
     def sales_dashbaord()
         print(" Sales Dashboard ")
         print("\n Enter  : " )
+
+
+def view_sales() :
+    event = print("Please enter ")

@@ -272,6 +272,7 @@ import string
 from osessenstials import clear_terminal  
 import dbconnect  
 from tabulate import tabulate
+# from dashboards import admin_dashboard
 
 def generate_unique_event_id():
     """Generate a unique event ID by combining random letters and digits."""
@@ -359,7 +360,7 @@ def enter_seating_arrangement(ticket_data):
     return seating_arrangement
 
 
-def new_event():
+def new_event(username):
     """Register a new event by gathering all necessary details and saving them in the database."""
     clear_terminal()
     print("Event registration starting...")
@@ -376,7 +377,6 @@ def new_event():
     event_Organizers = int(input("Enter the number of event organizers: "))
     event_Host_Contact = input("Enter event host contact number: ")
     host_name = input("Enter the name of the host: ")
-    emp_username = input("Enter your company's Employee ID: ")
     security_verification = input("Does this event require attendee's security verification? (Y/N): ")
     
     ticket_data = {}
@@ -403,7 +403,7 @@ def new_event():
     seating_arrangement = enter_seating_arrangement(ticket_data)
     
     event_data = {
-        "event_Company": emp_username,
+        "event_Company": username,
         "event_ID": event_ID,
         "host_name": host_name,
         "event_Name": event_Name,
@@ -426,7 +426,8 @@ def new_event():
     display_seating_arrangement(seating_arrangement)
     time.sleep(10)
 
-def delete_event():
+def delete_event(username):
+    #from dashboards import admin_dashboard
     clear_terminal()
     """Delete an event from the database using its event ID and host contact number for confirmation."""
     eventID = input("Please Enter Event ID of the event you want to delete: ")
@@ -455,10 +456,25 @@ def delete_event():
         if event_Host_Contact == event["event_Host_Contact"]:
             dbconnect.dbconnect_event().delete_one({"event_ID": eventID})
             print(f"\nEvent with ID {eventID} has been deleted.")
+            runagain = input("Press Enter to delete another event: ")
+            if (runagain == ""):
+                delete_event(username)
+            elif (runagain != ""):
+                from dashboards import admin_dashboard
+                print("Redirectin to admin dashbaord: ")
+                admin_dashboard(username)
+
         else:
             print("\nIncorrect host contact number. Deletion aborted.")
     else:
         print(f"\nNo event found with ID {eventID}")
+        runagain = input("Press Enter to delete another event: ")
+        if (runagain == ""):
+            delete_event(username)
+        elif (runagain != ""):
+            from dashboards import admin_dashboard
+            print("Redirectin to admin dashbaord: ")
+            admin_dashboard(username)
 
 def view_event(username):
     clear_terminal()
@@ -498,7 +514,7 @@ def view_event(username):
         print(f"An error occurred: {e}")
 
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
     #new_event()
-    #delete_event()
+   delete_event("rishabhjain2010")
     #view_event("qowinn")

@@ -56,10 +56,11 @@ def login():
             print("Invalid password. Please try again.")
             ++attempts 
             choice = input("Do you want to create a new account? (Y/N): ").upper()
-            if choice == "Y":
+            if choice.upper() == "Y":
                 registration()
                 time.sleep(3) 
-            
+            elif choice.upper != "Y" : 
+                continue
 
     print("Maximum number of login attempts reached. Please try again later. \n If you need assistance please contact the system administrator. \n Exiting...")
     sys.exit(1)

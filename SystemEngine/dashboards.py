@@ -5,8 +5,7 @@
 
 def admin_dashboard(username):
     from root import mainmenu
-    from event import new_event , delete_event , view_event
- 
+    
 
 
     print("Welcome to the Admin Dashboard!")
@@ -27,15 +26,18 @@ def admin_dashboard(username):
                 continue
 
             elif choice == 1:
-                new_event()
+                from event import new_event
+                new_event(username)
             elif choice == 2:
-                delete_event()
+                from event import delete_event
+                delete_event(username)
             elif choice == 3:
-                delete_event()
+                from accounts import view_sales
+                view_sales()
             elif choice == 4:
-                emp_managementdb()
+                emp_managementdb(username)
             elif choice == 5:
-                username= input("Please Enter your Employe Username: ")
+                from event import view_event
                 view_event(username)
             elif choice == 6:
                 return  mainmenu()
@@ -124,3 +126,6 @@ def emp_managementdb(username):
             
         except ValueError:
             print("Invalid input. Please enter a number (1-5).")
+
+
+admin_dashboard("rishabhjain2010")
