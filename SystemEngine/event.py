@@ -425,6 +425,13 @@ def new_event(username):
     print(f"Unique Event ID: {event_ID}")
     display_seating_arrangement(seating_arrangement)
     time.sleep(10)
+    return_admindashbaord = input("Press Enter to return to Admin Dashbaord or any other key to exit. ")
+    if(return_admindashbaord == ""):
+        from dashboards import admin_dashboard
+        print("Redirecting to admin dashboard.")
+        admin_dashboard(username)
+    else: 
+        exit
 
 def delete_event(username):
     #from dashboards import admin_dashboard
@@ -507,14 +514,31 @@ def view_event(username):
                 event_details += f"Host Contact: {event.get('event_Host_Contact', 'N/A')}\n"             
                 event_details += "-" * 40
                 print(event_details)
+
+                return_admindashbaord = input("Press Enter to return to Admin Dashbaord or any other key to exit. ")
+                if(return_admindashbaord == ""):
+                    from dashboards import admin_dashboard
+                    print("Redirecting to admin dashboard.")
+                    admin_dashboard(username)
+                else :
+                    exit
+
         else:
-            print(f"No active events for {username}.")
+            print(f"No active events for your company.")
+            return_admindashbaord = input("Press Enter to return to Admin Dashbaord or any other key to exit. ")
+            if(return_admindashbaord == ""):
+                from dashboards import admin_dashboard
+                print("Redirecting to admin dashboard.")
+                admin_dashboard(username)
+            else :
+                exit
     
     except Exception as e:
         print(f"An error occurred: {e}")
+   
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
     #new_event()
-   delete_event("rishabhjain2010")
+    #delete_event("rishabhjain2010")
     #view_event("qowinn")

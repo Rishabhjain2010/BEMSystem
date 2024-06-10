@@ -125,3 +125,8 @@ display_seats(event_id, ticket_schema)
 
 # Book a seat
 book_seat(event_id, ticket_schema, "A1", "John Doe", "1234567890", "john.doe@example.com")
+
+def new_sale():
+    # Create a new sale
+    event_ID= input("Please Enter Event_ID to create new sale: ")
+    

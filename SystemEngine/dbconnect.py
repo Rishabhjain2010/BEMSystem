@@ -30,7 +30,7 @@ def get_collection(database_name, collection_name):
 
 def dbconnect_event():
     """Get the 'event' collection from the 'image_database' database."""
-    return get_collection('image_database', 'event')
+    return get_collection('BEMSystem', 'event')
 
 def dbconnect_user():
     """Get the 'users' collection from the 'BEMSystem' database."""

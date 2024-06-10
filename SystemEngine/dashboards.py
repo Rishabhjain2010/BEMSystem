@@ -56,7 +56,7 @@ def admin_dashboard(username):
 
 def emp_dashboard(username):
     from root import mainmenu
-    from sale import create_sale 
+    from createt_sale import new_sale 
     from event import view_event 
     from entry import verify_entry
 
@@ -77,7 +77,7 @@ def emp_dashboard(username):
                 continue
 
             elif choice == 1:
-                create_sale(username)
+                new_sale(username)
             elif choice == 2:
                 emp_id = input("Please Enter Your Employe ID: ")
                 #view_sale(username , emp_id)
