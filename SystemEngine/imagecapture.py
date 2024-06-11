@@ -6,6 +6,7 @@ import pymongo
 import face_recognition
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 def capture_image_from_webcam():
     cap = cv2.VideoCapture(0)
@@ -81,7 +82,7 @@ def verify_faces(image1, image2):
 
 # Capture and store an image
 def capture_img(): 
-    print("Press any key to capture the image...")
+    # print("Press any key to capture the image...")
     image = capture_image_from_webcam()
     plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
     plt.axis('off')
@@ -92,14 +93,17 @@ def capture_img():
         return image_base64
     else:
         print("No faces detected in the image. Please Retry.")
+        input("Press Enter to continue...")
         capture_img()
     
 
 # Capture another image for verification
 
 def verify_img():
-    print("Press any key to capture the image for verification...")
+    from
+    input("Press any key to capture the image for verification...")
     new_image = capture_image_from_webcam()
+    print("Image Captured Successfully")
     plt.imshow(cv2.cvtColor(new_image, cv2.COLOR_BGR2RGB))
     plt.axis('off')
     plt.show(block=False)
@@ -116,10 +120,12 @@ def verify_img():
     print("Verifying the images...")
     is_match = verify_faces(stored_image, new_image)
     if is_match:
-        print("Faces match!")
-        return True
+        print("Identity match!")
+        time.sleep(10)
+        return 
     else:
-        print("Faces do not match. Press enter to retry.")
+        print("Identity do not match. Press enter to retry.")
+
         return False
 
 
