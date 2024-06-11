@@ -2,35 +2,38 @@ import pymongo
 from bson.objectid import ObjectId
 import random
 import string
+from dbconnect import dbconnect_event
+
 
 # Global variable for MongoDB client
-mongo_client = None
+# mongo_client = None
+# def get_mongo_client():
+# 
+    # global mongo_client
+    # """Get or initialize the MongoDB client."""
+    # if mongo_client is None:
+    # 
+            # mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
+        # try:
+            # print("MongoDB connection established successfully.")
+        # except pymongo.errors.ConnectionFailure as e:
+            # print(f"Failed to connect to MongoDB: {e}")
+            # raise  # Rethrow the exception for handling elsewhere
 
-def get_mongo_client():
-    """Get or initialize the MongoDB client."""
-    global mongo_client
-    
-    if mongo_client is None:
-        try:
-            mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
-            print("MongoDB connection established successfully.")
-        except pymongo.errors.ConnectionFailure as e:
-            print(f"Failed to connect to MongoDB: {e}")
-            raise  # Rethrow the exception for handling elsewhere
-    return mongo_client
+    # return mongo_client
+# def get_collection(database_name, collection_name):
+    # """Get a MongoDB collection by database name and collection name."""
+    # client = get_mongo_client()
+    # db = client[database_name]
+    # collection = db[collection_name]
+    # return collection
 
-def get_collection(database_name, collection_name):
-    """Get a MongoDB collection by database name and collection name."""
-    client = get_mongo_client()
-    db = client[database_name]
-    collection = db[collection_name]
-    return collection
-
-def dbconnect_event():
-    """Get the 'event' collection from the 'image_database' database."""
-    return get_collection('image_database', 'event')
+# def dbconnect_event():
+#     """Get the 'event' collection from the 'image_database' database."""
+#     return get_collection('image_database', 'event')
 
 def display_events():
+    # from dbconnect import dbconnect_event
     db = dbconnect_event()
     events = db.find()
     print("All events in the collection:")
@@ -38,6 +41,7 @@ def display_events():
         print(event)
 
 def display_seats(event_id, ticket_schema):
+    # from dbconnect import dbconnect_event
     db = dbconnect_event()
     try:
         event = db.find_one({"event_ID": event_id})
@@ -61,12 +65,27 @@ def display_seats(event_id, ticket_schema):
     else:
         print("Event not found")
 
-def book_seat(event_id, ticket_schema, seatno, customer_name, customer_contact, customer_email):
+def display_ticketschema(event_id): 
+    db = dbconnect_event()
+    try:
+        event = db.find_one({"event_ID":event_id})
+    except Exception as e:
+        print(f"Error findind event: {e}")
+        return
+    
+    if event:
+
+        ticket_schema = event["ticket_schema"]
+        for ticket_schema in ticket_schema:
+            print(ticket_schema)
+
+
+
+def book_seat(event_id, ticket_schema, seatno, customer_name, customer_contact, customer_email , emp_ID , security_data):
     from imagecapture import capture_img
     db = dbconnect_event()
     sale_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
-    emp_id = "EMP_ENT"
-    security_data = capture_img()
+    # security_data = capture_img()
 
     try:
         event = db.find_one({"event_ID": event_id})
@@ -93,7 +112,7 @@ def book_seat(event_id, ticket_schema, seatno, customer_name, customer_contact, 
                 seat['customer_contact'] = customer_contact
                 seat['customer_email'] = customer_email
                 seat['sale_id'] = sale_id
-                seat['emp_id'] = emp_id
+                seat['emp_id'] = emp_ID
                 seat['security_data'] = security_data
                 seat_found = True
                 break
@@ -114,19 +133,45 @@ def book_seat(event_id, ticket_schema, seatno, customer_name, customer_contact, 
         print("Seat not found")
 
 # Example usage:
-event_id = "941FD"
-ticket_schema = "g"
+# event_id = "941FD"
+# ticket_schema = "g"
 
 # Display all events to verify their structure
 # display_events()
 
 # Display available seats
-display_seats(event_id, ticket_schema)
+# display_seats(event_id, ticket_schema)
 
 # Book a seat
-book_seat(event_id, ticket_schema, "A1", "John Doe", "1234567890", "john.doe@example.com")
+# book_seat(event_id, ticket_schema, "A1", "John Doe", "1234567890", "john.doe@example.com")
 
-def new_sale():
+def new_sale(emp_id):
+    from imagecapture import capture_img
     # Create a new sale
-    event_ID= input("Please Enter Event_ID to create new sale: ")
+    event_ID = input("Please Enter Event_ID to create new sale: ")
+
+    ticket_schema= input("Please enter ticket scehma: ")
+    print("Seats Available: ")
+    display_seats(event_ID,ticket_schema)
+    print("Please Enter Details: ")
+    seatno = input("Seat Number: ")
+    customer_name = input("Customer Name: ")
+    customer_contact = input("Customer Contact: ")
+    customer_email = input("Customer Email: ")
+    db = dbconnect_event
+    event = db.find_one({"event_ID": event_ID})
+
+    securityverification = event["security_verification"]
+
+    if(securityverification.upper() == "Y"):
+        security_data = capture_img()
+    elif(securityverification.upper() == "N") :
+        security_data = "None" 
+
+    
+    book_seat(event_ID, ticket_schema , seatno , customer_name , customer_contact , customer_email , emp_id  , security_data)
+
+
+
+
     
