@@ -100,7 +100,7 @@ def capture_img():
 # Capture another image for verification
 
 def verify_img():
-    from
+    
     input("Press any key to capture the image for verification...")
     new_image = capture_image_from_webcam()
     print("Image Captured Successfully")
