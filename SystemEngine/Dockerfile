@@ -1,6 +1,6 @@
 #                                                               By Rishabhjain2010
-#                                                               Date: 2024/04/06
-#                                                               Time: 04:51:00
+#                                                               Date: 2024/06/13
+#                                                               Time: 01:09:00
 
 #Dockerfile
 FROM python:3.11.4
@@ -27,7 +27,9 @@ RUN pip install bcrypt
 RUN sudo apt-get install libqt5gui5
 RUN sudo apt install cmake
 RUN pip install face_recognition
-RUN pip 
+RUN pip install prettytable
+RUN pip install pillow          
+RUN 
 
 
 
