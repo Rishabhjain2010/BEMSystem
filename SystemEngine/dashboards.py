@@ -82,7 +82,8 @@ def emp_dashboard(username):
                 emp_id = input("Please Enter Your Employe ID: ")
                 #view_sale(username , emp_id)
             elif choice == 3:
-                view_event()
+                admin_username = input("Please Enter Admin Username: ")
+                view_event(admin_username)
             elif choice == 4:
                 return mainmenu()
             elif choice == 5:
@@ -115,9 +116,9 @@ def emp_managementdb(username):
             elif choice == 1:
                 create_newemployee(username)
             elif choice == 2:
-                delete_Emp()
+                delete_Emp(username)
             elif choice == 3:
-                view_emp()
+                view_emp(username)
             elif choice == 4:
                 return mainmenu()
             elif choice == 5:
