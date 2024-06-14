@@ -215,9 +215,9 @@ def registration():
     print("Your Employee Username is:", employeuser)
     print("Your Employee Password is:", employepass)
     print("Please Note it down for future reference!")
-
+    input("Press any key to redirect to admin dashboard")
     # Dashboard Redirect
-    #admin_dashboard()
+    admin_dashboard(username)
 
 # Execute the registration function
 #registration()

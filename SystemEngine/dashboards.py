@@ -1,5 +1,7 @@
 # Admin Dashboard
 
+from osessenstials import clear_terminal
+import time
 
 
 
@@ -21,7 +23,7 @@ def admin_dashboard(username):
 
         try:
             choice = int(input("Enter your choice (1-7): "))
-            if choice not in range(1, 7):
+            if choice not in range(1, 8):
                 print("Invalid choice. Please try again.")
                 continue
 
@@ -71,8 +73,8 @@ def emp_dashboard(username):
         print("5. Logout")
 
         try:
-            choice = int(input("Enter your choice (1-75): "))
-            if choice not in range(1, 5):
+            choice = int(input("Enter your choice (1-7): "))
+            if choice not in range(1, 6):
                 print("Invalid choice. Please try again.")
                 continue
 
@@ -94,6 +96,8 @@ def emp_dashboard(username):
             print("Invalid input. Please enter a number (1-5).")
 
 def emp_managementdb(username):
+    from root import mainmenu
+    clear_terminal()
     from employee import create_newemployee , delete_Emp , view_emp
     from root import mainmenu
     
@@ -104,11 +108,9 @@ def emp_managementdb(username):
         print("2. Delete Employee")
         print("3. View Employee")
         print("4. Go back to main menu")
-        print("5. Go back to previous menu")
-        print("6. Go back to previous menu")
-
+        
         try:
-            choice = int(input("Enter your choice (1-75): "))
+            choice = int(input("Enter your choice (1-4): "))
             if choice not in range(1, 5):
                 print("Invalid choice. Please try again.")
                 continue
@@ -121,12 +123,10 @@ def emp_managementdb(username):
                 view_emp(username)
             elif choice == 4:
                 return mainmenu()
-            elif choice == 5:
-                print("Logging out...")
-                break
-            
+          
         except ValueError:
-            print("Invalid input. Please enter a number (1-5).")
+            print("Invalid input. Please enter a number (1-4).")
 
 
-admin_dashboard("rishabhjain2010")
+#admin_dashboard("rishabhjain2010")
+emp_dashboard("avstau")

@@ -429,6 +429,8 @@ def new_event(username):
     if(return_admindashbaord == ""):
         from dashboards import admin_dashboard
         print("Redirecting to admin dashboard.")
+        time.sleep(10)
+        clear_terminal()
         admin_dashboard(username)
     else: 
         exit
@@ -469,6 +471,8 @@ def delete_event(username):
             elif (runagain != ""):
                 from dashboards import admin_dashboard
                 print("Redirectin to admin dashbaord: ")
+                time.sleep(10)
+                clear_terminal()
                 admin_dashboard(username)
 
         else:
@@ -481,6 +485,8 @@ def delete_event(username):
         elif (runagain != ""):
             from dashboards import admin_dashboard
             print("Redirectin to admin dashbaord: ")
+            time.sleep(10)
+            clear_terminal()
             admin_dashboard(username)
 
 def view_event(username):
@@ -515,13 +521,7 @@ def view_event(username):
                 event_details += "-" * 40
                 print(event_details)
 
-                return_admindashbaord = input("Press Enter to return to Admin Dashbaord or any other key to exit. ")
-                if(return_admindashbaord == ""):
-                    from dashboards import admin_dashboard
-                    print("Redirecting to admin dashboard.")
-                    admin_dashboard(username)
-                else :
-                    exit
+               
 
         else:
             print(f"No active events for your company.")
@@ -529,12 +529,24 @@ def view_event(username):
             if(return_admindashbaord == ""):
                 from dashboards import admin_dashboard
                 print("Redirecting to admin dashboard.")
+                time.sleep(10)
+                clear_terminal()
                 admin_dashboard(username)
             else :
                 exit
     
     except Exception as e:
         print(f"An error occurred: {e}")
+
+    return_admindashbaord = input("Press Enter to return to Admin Dashboard or any other key to exit. ")
+    if(return_admindashbaord == ""):
+        from dashboards import admin_dashboard
+        print("Redirecting to admin dashboard.")
+        time.sleep(10)
+        clear_terminal()
+        admin_dashboard(username)
+    else :
+        exit
    
 
 

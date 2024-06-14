@@ -90,11 +90,12 @@ def capture_img():
     input("Press Enter to continue...")
     if face_recognition.face_encodings(image):
         image_base64 = convert_image_to_base64(image)
+        print(image_base64)
         return image_base64
     else:
         print("No faces detected in the image. Please Retry.")
         input("Press Enter to continue...")
-        capture_img()
+        return capture_img()
     
 
 # Capture another image for verification

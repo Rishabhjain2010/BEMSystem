@@ -129,7 +129,7 @@ def book_seat(event_id, ticket_schema, seatno, customer_name, customer_contact, 
         if result.modified_count > 0:
             clear_terminal()
             print("Seat booked successfully")
-            print("Please keep invoice id for \future reference." + sale_id )
+            print("Please keep invoice id for future reference." + sale_id )
             time.sleep(5)
         else:
             print("Seat booking failed")
@@ -164,24 +164,24 @@ def new_sale(emp_id):
     customer_name = input("Customer Name: ")
     customer_contact = input("Customer Contact: ")
     customer_email = input("Customer Email: ")
-    db = dbconnect_event
-    event = db.find_one({"event_ID": event_ID})
+    #db = dbconnect_event
+    #event = db.find_one({"event_ID": event_ID})
 
-    securityverification = event["security_verification"]
-
-    if(securityverification.upper() == "Y"):
-        ready = input("Event requires secuirty verification. \n  Press enter to click picture when ready or X to Cancel booking.")
-        if(ready == ""):
-            security_data = capture_img()
-        else:
-            print("Booking Cancelled")
-            time.sleep(5)
-            new_sale(emp_id)
-
-    elif(securityverification.upper() == "N") :
-        security_data = "None" 
-
-    
+    #securityverification = event["security_verification"]
+# 
+    # if(securityverification.upper() == "Y"):
+        # ready = input("Event requires secuirty verification. \n  Press enter to click picture when ready or X to Cancel booking.")
+        # if(ready == ""):
+            # security_data = capture_img()
+        # else:
+            # print("Booking Cancelled")
+            # time.sleep(5)
+            # new_sale(emp_id)
+# 
+    # elif(securityverification.upper() == "N") :
+        # security_data = "None" 
+# 
+    security_data = capture_img()
     book_seat(event_ID, ticket_schema , seatno , customer_name , customer_contact , customer_email , emp_id  , security_data)
 
 
