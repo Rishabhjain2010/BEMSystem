@@ -29,7 +29,7 @@ def create_newemployee(username):
 
 def delete_Emp(username):
     clear_terminal()
-    collection =dbconnect_employee 
+    collection =dbconnect_employee()
     employee_id= input("Please Enter Employee ID: ")
     result = collection.delete_one({"employee_id": employee_id , "company" : username})
     if result.deleted_count == 1:
@@ -80,4 +80,5 @@ def add_employee(collection, username , employeeID  ,  first_name, last_name, po
     time.sleep(5)
 
 # create_newemployee("systemadmin")
-view_emp("systemadmin")
+# view_emp("systemadmin")
+# delete_Emp('systemadmin')
