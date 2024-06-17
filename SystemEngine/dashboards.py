@@ -7,7 +7,7 @@ import time
 
 def admin_dashboard(username):
     from root import mainmenu
-    
+       
 
 
     print("Welcome to the Admin Dashboard!")
@@ -34,8 +34,8 @@ def admin_dashboard(username):
                 from event import delete_event
                 delete_event(username)
             elif choice == 3:
-                from accounts import view_sales
-                view_sales()
+                from createt_sale import view_sales
+                view_sales(username)
             elif choice == 4:
                 emp_managementdb(username)
             elif choice == 5:

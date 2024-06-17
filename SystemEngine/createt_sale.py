@@ -1,9 +1,9 @@
-import pymongo
 import random
 import string
 from dbconnect import dbconnect_event
 import time
 from osessenstials import clear_terminal
+from tabulate import tabulate
 
 
 # Global variable for MongoDB client
@@ -164,27 +164,85 @@ def new_sale(emp_id):
     customer_name = input("Customer Name: ")
     customer_contact = input("Customer Contact: ")
     customer_email = input("Customer Email: ")
-    #db = dbconnect_event
-    #event = db.find_one({"event_ID": event_ID})
+    collection = dbconnect_event
+    event = collection.find_one({"event_ID": event_ID})
 
-    #securityverification = event["security_verification"]
-# 
-    # if(securityverification.upper() == "Y"):
-        # ready = input("Event requires secuirty verification. \n  Press enter to click picture when ready or X to Cancel booking.")
-        # if(ready == ""):
-            # security_data = capture_img()
-        # else:
-            # print("Booking Cancelled")
-            # time.sleep(5)
-            # new_sale(emp_id)
-# 
-    # elif(securityverification.upper() == "N") :
-        # security_data = "None" 
-# 
+    securityverification = event["security_verification"]
+
+    if(securityverification.upper() == "Y"):
+        ready = input("Event requires secuirty verification. \n  Press ENTER to click picture when ready or X to Cancel booking.")
+        if(ready == ""):
+            security_data = capture_img()
+        else:
+            print("Booking Cancelled")
+            time.sleep(5)
+            new_sale(emp_id)
+
+    elif(securityverification.upper() == "N") :
+        security_data = "None" 
+
     security_data = capture_img()
     book_seat(event_ID, ticket_schema , seatno , customer_name , customer_contact , customer_email , emp_id  , security_data)
 
 
 
+def view_sales(username):
+    from dashboards import admin_dashboard
+    clear_terminal()
+    event_id = input("Please enter Event ID to view sales: ")
 
-    
+    # Assuming dbconnect_event is a function that returns a MongoDB collection
+    from dbconnect import dbconnect_event
+
+    # Get the collection
+    collection = dbconnect_event()
+
+    # Find the event by event_ID
+    event = collection.find_one({"event_ID": event_id})
+    if not event:
+        print(f"No event found with event_ID: {event_id}")
+        return
+
+    # Initialize total sales and details list
+    total_sales = 0
+    sales_details = []
+
+    # Iterate over seating arrangements
+    for schema, seats in event.get("seating_arrangement", {}).items():
+        ticket_price = event.get("tickets_Schemas", {}).get(schema, {}).get("ticket_price", 0)
+        
+        for row in seats:
+            for seat in row:
+                if seat.get("sale_id"):
+                    sales_details.append({
+                        "Seat No": seat["seatno"],
+                        "Customer Name": seat["customer_name"],
+                        "Customer Contact": seat["customer_contact"],
+                        "Customer Email": seat["customer_email"],
+                        "Sale ID": seat["sale_id"],
+                        "Employee ID": seat["emp_id"],
+                        "Ticket Price": ticket_price
+                    })
+                    total_sales += ticket_price
+
+    # Display the sales details in a table format
+    if sales_details:
+        print(tabulate(sales_details, headers="keys", tablefmt="grid"))
+    else:
+        print("No sales found for the event.")
+
+    print(f"Total Sales: {total_sales}")
+    # return sales_details, total_sales
+
+    findnext = input("Press ENTER to search another event or any other key to return to Admin Dashboard: ")
+    if findnext == "":
+        view_sales(username)
+    elif findnext != "":
+        admin_dashboard(username)
+
+
+
+
+
+# Example usage
+# view_sales("systemadmin")
