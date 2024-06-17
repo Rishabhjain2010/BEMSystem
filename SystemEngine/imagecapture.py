@@ -87,10 +87,10 @@ def capture_img():
     plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
     plt.axis('off')
     plt.show(block=False)
-    input("Press Enter to continue...")
+    # input("Press Enter to continue...")
     if face_recognition.face_encodings(image):
         image_base64 = convert_image_to_base64(image)
-        print(image_base64)
+        # print(image_base64)
         return image_base64
     else:
         print("No faces detected in the image. Please Retry.")

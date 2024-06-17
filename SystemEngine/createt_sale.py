@@ -66,19 +66,35 @@ def display_seats(event_id, ticket_schema):
     else:
         print("Event not found")
 
+# def display_ticketschema(event_id): 
+#     db = dbconnect_event()
+#     try:
+#         event = db.find_one({"event_ID":event_id})
+#     except Exception as e:
+#         print(f"Error findind event: {e}")
+#         return
+    
+#     if event:
+
+#         ticket_schema = event["ticket_Schema"]
+#         for ticket_schema in ticket_schema:
+#             print(ticket_schema)
+
 def display_ticketschema(event_id): 
     db = dbconnect_event()
     try:
         event = db.find_one({"event_ID":event_id})
+        # print(event)
     except Exception as e:
         print(f"Error findind event: {e}")
         return
     
     if event:
 
-        ticket_schema = event["ticket_schema"]
-        for ticket_schema in ticket_schema:
-            print(ticket_schema)
+        tickets_schemas = event["tickets_Schemas"]
+        for tickets_schemas in tickets_schemas:
+            print(tickets_schemas)
+
 
 
 
@@ -152,9 +168,12 @@ def book_seat(event_id, ticket_schema, seatno, customer_name, customer_contact, 
 # book_seat(event_id, ticket_schema, "A1", "John Doe", "1234567890", "john.doe@example.com")
 
 def new_sale(emp_id):
+    from osessenstials import clear_terminal
     from imagecapture import capture_img
+    clear_terminal()
     # Create a new sale
     event_ID = input("Please Enter Event_ID to create new sale: ")
+    display_ticketschema(event_ID)
 
     ticket_schema= input("Please enter ticket scehma: ")
     print("Seats Available: ")
@@ -164,7 +183,7 @@ def new_sale(emp_id):
     customer_name = input("Customer Name: ")
     customer_contact = input("Customer Contact: ")
     customer_email = input("Customer Email: ")
-    collection = dbconnect_event
+    collection = dbconnect_event()
     event = collection.find_one({"event_ID": event_ID})
 
     securityverification = event["security_verification"]
@@ -178,7 +197,7 @@ def new_sale(emp_id):
             time.sleep(5)
             new_sale(emp_id)
 
-    elif(securityverification.upper() == "N") :
+    else:
         security_data = "None" 
 
     security_data = capture_img()
@@ -246,3 +265,4 @@ def view_sales(username):
 
 # Example usage
 # view_sales("systemadmin")
+# new_sale("avstau")
