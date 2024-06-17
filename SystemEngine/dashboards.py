@@ -62,7 +62,7 @@ def emp_dashboard(username):
     from event import view_event 
     from entry import verify_entry
 
-
+    clear_terminal()
     print("Welcome to the Employee Dashboard!")
     while True:
         print("\nPlease select an option:")
@@ -73,7 +73,7 @@ def emp_dashboard(username):
         print("5. Logout")
 
         try:
-            choice = int(input("Enter your choice (1-7): "))
+            choice = int(input("Enter your choice (1-5): "))
             if choice not in range(1, 6):
                 print("Invalid choice. Please try again.")
                 continue
@@ -81,9 +81,9 @@ def emp_dashboard(username):
             elif choice == 1:
                 new_sale(username)
             elif choice == 2:
-                emp_id = input("Please Enter Your Employe ID: ")
-                #view_sale(username , emp_id)
+                verify_entry(username )
             elif choice == 3:
+                clear_terminal()
                 admin_username = input("Please Enter Admin Username: ")
                 view_event(admin_username)
             elif choice == 4:
@@ -129,5 +129,4 @@ def emp_managementdb(username):
 
 
 #admin_dashboard("rishabhjain2010")
-# 
-emp_dashboard("avstau")
+#emp_dashboard("avstau")

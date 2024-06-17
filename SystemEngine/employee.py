@@ -8,8 +8,8 @@ from osessenstials import clear_terminal
 
 def create_newemployee(username):
     clear_terminal()
-    collection = dbconnect_employee
-    company= username
+    collection = dbconnect_employee()
+    # company= username
     employeeID = input(" Enter Employee ID: ")
     first_name = input("Enter First Name: ")
     last_name = input("Enter last Namme: ")
@@ -45,21 +45,21 @@ def delete_Emp(username):
 
 def view_emp(username):
     clear_terminal()
-    collection = dbconnect_employee
+    collection = dbconnect_employee()
     employees = collection.find({"company": username})
     table = PrettyTable()
     table.field_names = ["Employee ID", "First Name", "Last Name", "Position", "Salary" , "Contact"]
     
     for employee in employees:
-        table.add_row([employee['employee_id'], employee['first_name'], employee['last_name'], employee['position'], employee['salary']])
+        table.add_row([employee['employee_id'], employee['first_name'], employee['last_name'], employee['position'], employee['salary'], employee['contact']])
     
     if table.rowcount == 0:
         print("No employees found associated with your company.")
     else:
         print(table)
-    
+    from dashboards import emp_managementdb
     input("Press Enter to go back to Previous Menu")
-    create_newemployee(username)
+    emp_managementdb(username)
 
 
     
@@ -78,3 +78,6 @@ def add_employee(collection, username , employeeID  ,  first_name, last_name, po
     collection.insert_one(employee)
     print("Employee added successfully.")
     time.sleep(5)
+
+# create_newemployee("systemadmin")
+view_emp("systemadmin")
