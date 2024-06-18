@@ -11,7 +11,7 @@
 def identityverification():
     import register 
     import login 
-    import elogin
+    from elogin import elogin
     import osessenstials
 
     loginopt = int(input("Please Enter 1 to login as Existing User! \nPlease Enter 2 for New Registration! \nPlease Enter 3 for Employee Login! \n "))
@@ -25,7 +25,7 @@ def identityverification():
     elif loginopt == 2:
         return register.registration()
     elif loginopt ==3:
-        return elogin.elogin()
+        return elogin()
     elif loginopt != 1 | loginopt != 2 | loginopt != 3:
         print("Invalid Option!")
         return identityverification()

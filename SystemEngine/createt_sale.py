@@ -220,7 +220,8 @@ def view_sales(username):
     event = collection.find_one({"event_ID": event_id})
     if not event:
         print(f"No event found with event_ID: {event_id}")
-        return
+        time.sleep(10)
+        view_sales()
 
     # Initialize total sales and details list
     total_sales = 0
