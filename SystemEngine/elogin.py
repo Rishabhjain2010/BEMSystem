@@ -35,7 +35,7 @@ def elogin():
             print(" Exiting  Program...")
             sys.exit(0)
     elif result is not None:
-        stored_passkey = verifyidentity["epasskey"]
+        stored_passkey = verifyidentity["emppass"]
         if bcrypt.checkpw(passkey.encode(),stored_passkey ):
             print("User Authenticated!"+ "\nWelcome" + username)
             print("Please Wait while we redirect you to your dashboard...")
