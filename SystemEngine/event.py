@@ -548,7 +548,64 @@ def view_event(username):
     else :
         exit
    
+def view_eventemp(username):
+    clear_terminal()
+    from dbconnect import dbconnect_event
+    print("Please Wait while we get active events")
+    
+    try:
+        # Retrieve the event collection from the database
+        collection = dbconnect_event()
+        
+        # Get current date as string in yyyy-mm-dd format
+        current_date = datetime.now()
+        
+        
+        # Fetch and filter events from the collection based on the date and username
+        filtered_events = [
+            event for event in collection.find()
+            if event.get('event_Company') == username and str(event.get('event_Date', ''))[:-1] >= current_date.strftime('%Y-%m-%d')
+        ]
+        
+        
+        if filtered_events:
+            print(f"Active events for {username}:")
+            print("-" * 40)
+            for event in filtered_events:
+                event_details = f"Event Name: {event.get('event_Name', 'N/A')}\n"
+                event_details += f"Date: {event['event_Date']}\n"
+                event_details += f"Location: {event.get('event_Venue', 'N/A')}\n"
+                event_details += f"Type: {event.get('event_Type', 'N/A')}\n"
+                event_details += f"Host Contact: {event.get('event_Host_Contact', 'N/A')}\n"             
+                event_details += "-" * 40
+                print(event_details)
 
+               
+
+        else:
+            print(f"No active events for your company.")
+            return_empdash = input("Press Enter to return to Employee Dashbaord or any other key to exit. ")
+            if(return_empdash == ""):
+                from dashboards import emp_dashboard
+                print("Redirecting to admin dashboard.")
+                time.sleep(10)
+                clear_terminal()
+                emp_dashboard(username)
+            else :
+                exit
+    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return_employee = input("Press Enter to return to Employee Dashboard or any other key to exit. ")
+    if(return_employee == ""):
+        from dashboards import emp_dashboard
+        print("Redirecting to employee dashboard.")
+        time.sleep(10)
+        clear_terminal()
+        emp_dashboard(username)
+    else :
+        exit
 
 #if __name__ == "__main__":
     #new_event()

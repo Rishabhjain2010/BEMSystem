@@ -59,7 +59,7 @@ def admin_dashboard(username):
 def emp_dashboard(username):
     from root import mainmenu
     from createt_sale import new_sale 
-    from event import view_event 
+    from event import view_eventemp
     from entry import verify_entry
 
     clear_terminal()
@@ -85,7 +85,7 @@ def emp_dashboard(username):
             elif choice == 3:
                 clear_terminal()
                 admin_username = input("Please Enter Admin Username: ")
-                view_event(admin_username)
+                view_eventemp(admin_username)
             elif choice == 4:
                 return mainmenu()
             elif choice == 5:
