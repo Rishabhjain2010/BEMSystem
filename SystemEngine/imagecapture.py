@@ -100,7 +100,7 @@ def capture_img():
 
 # Capture another image for verification
 
-def verify_img():
+def verify_img(image_db):
     
     input("Press any key to capture the image for verification...")
     new_image = capture_image_from_webcam()
@@ -111,11 +111,13 @@ def verify_img():
     input("Press Enter to continue...")
     if not face_recognition.face_encodings(new_image):
         print("No faces detected in the second image. Please Retry.")
-        verify_img()
+        verify_img(image_db)
 
     # Retrieve the stored image from MongoDB
-    print("Retrieving the stored image from MongoDB...")
-    stored_image = retrieve_image_from_mongodb()
+    img_data = base64.b64decode(image_db)
+    image = Image.open(io.BytesIO(img_data))
+    stored_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+
 
     # Verify if the new image matches the stored image
     print("Verifying the images...")
@@ -123,11 +125,14 @@ def verify_img():
     if is_match:
         print("Identity match!")
         time.sleep(10)
-        return 
+        return True
     else:
-        print("Identity do not match. Press enter to retry.")
-
-        return False
+        # print("Identity do not match. Press enter to retry.")
+        retry= input("Identity do not match. Press enter to retry.")
+        if retry == "":
+            verify_img(image_db)
+        else:
+            return False
 
 
 #capture_img()

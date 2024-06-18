@@ -81,7 +81,7 @@ def emp_dashboard(username):
             elif choice == 1:
                 new_sale(username)
             elif choice == 2:
-                verify_entry(username )
+                verify_entry(username)
             elif choice == 3:
                 clear_terminal()
                 admin_username = input("Please Enter Admin Username: ")
