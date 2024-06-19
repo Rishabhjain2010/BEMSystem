@@ -7,8 +7,8 @@ import time
 
 def admin_dashboard(username):
     from root import mainmenu
-    
-
+       
+    clear_terminal()
 
     print("Welcome to the Admin Dashboard!")
     while True:
@@ -34,8 +34,8 @@ def admin_dashboard(username):
                 from event import delete_event
                 delete_event(username)
             elif choice == 3:
-                from accounts import view_sales
-                view_sales()
+                from createt_sale import view_sales
+                view_sales(username)
             elif choice == 4:
                 emp_managementdb(username)
             elif choice == 5:
@@ -59,10 +59,10 @@ def admin_dashboard(username):
 def emp_dashboard(username):
     from root import mainmenu
     from createt_sale import new_sale 
-    from event import view_event 
+    from event import view_eventemp
     from entry import verify_entry
 
-
+    clear_terminal()
     print("Welcome to the Employee Dashboard!")
     while True:
         print("\nPlease select an option:")
@@ -73,7 +73,7 @@ def emp_dashboard(username):
         print("5. Logout")
 
         try:
-            choice = int(input("Enter your choice (1-7): "))
+            choice = int(input("Enter your choice (1-5): "))
             if choice not in range(1, 6):
                 print("Invalid choice. Please try again.")
                 continue
@@ -81,11 +81,11 @@ def emp_dashboard(username):
             elif choice == 1:
                 new_sale(username)
             elif choice == 2:
-                emp_id = input("Please Enter Your Employe ID: ")
-                #view_sale(username , emp_id)
+                verify_entry(username)
             elif choice == 3:
+                clear_terminal()
                 admin_username = input("Please Enter Admin Username: ")
-                view_event(admin_username)
+                view_eventemp(admin_username)
             elif choice == 4:
                 return mainmenu()
             elif choice == 5:
