@@ -603,8 +603,7 @@ def view_eventemp(username):
         print("Redirecting to employee dashboard.")
         time.sleep(10)
         clear_terminal()
-        emp_dashboard
-    (username)
+        emp_dashboard(username)
     else :
         exit
 

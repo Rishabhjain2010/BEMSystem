@@ -44,7 +44,7 @@ def verify_entry(username):
 
 
         
-# verify_entry()         
+# verify_entry("avstau")         
 
 
     

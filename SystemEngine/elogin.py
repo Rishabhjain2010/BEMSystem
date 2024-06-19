@@ -88,6 +88,7 @@ def verifypassword(username , passkey) :
 
 #Login Function
 def elogin():
+    from register import registration
     osessenstials.clear_terminal()
     maxattempts = 3
     attempts = 0
